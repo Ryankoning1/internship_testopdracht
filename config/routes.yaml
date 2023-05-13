@@ -1,0 +1,49 @@
+homepage:
+  path: /
+  controller: Symfony\Bundle\FrameworkBundle\Controller\RedirectController::urlRedirectAction
+  defaults:
+    path: /api/v1
+    permanent: true
+
+logout:
+  path: /logout
+  methods: GET
+
+api_home:
+  path: /api/v1
+  controller: App\Acme\Controller\AcmeController::indexAction
+  methods: [ GET ]
+  requirements:
+    id: \d+
+
+
+account_list:
+  path: /api/v1/account
+  controller: App\Account\Controller\AccountController::getAccountListAction
+  methods: [ GET ]
+
+account_create:
+  path: /api/v1/account
+  controller: App\Account\Controller\AccountController::createAccountAction
+  methods: [ POST ]
+
+account_read:
+  path: /api/v1/account/{id}
+  controller: App\Account\Controller\AccountController::readAccountAction
+  methods: [ GET ]
+  requirements:
+    id: \d+
+
+account_update:
+  path: /api/v1/account/{id}
+  controller: App\Account\Controller\AccountController::updateAccountAction
+  methods: [ PUT ]
+  requirements:
+    id: \d+
+
+account_delete:
+  path: /api/v1/account/{id}
+  controller: App\Account\Controller\AccountController::deleteAccountAction
+  methods: [ DELETE ]
+  requirements:
+    id: \d+
